@@ -13,30 +13,45 @@
         Watch the video and answer the following question. <br>What is the source as mentioned in the video?
         <br><br><br><br>
         <div style="display: inline-block; width: 48%;">
-            <input type="radio" name="gender" value="male">
+            <input type="radio" name="source" value="source1">
             NASA.Gov
         </div>
-        <input type="radio" name="gender" value="male">
+        <input type="radio" name="source" value="source2">
         Data.Gov
         <br><br><br>
         <div style="display: inline-block; width: 48%;">
-            <input type="radio" name="gender" value="male">
+            <input type="radio" name="source" value="source3">
             Facebook
         </div>
-        <input type="radio" name="gender" value="male">
+        <input type="radio" name="source" value="source4">
         XYZ.net
     </div>
     <div style="display: inline-block; position: absolute; top: 15%; margin-left: 60px;">
         <iframe width="300" height="200" src="https://www.youtube.com/embed/ih9jPaZct1w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
         <b>Expedition 40 Undocks Ending Mission</b>
-        <p style="font-size: 12px">Source: https://www.nasa.gov/multimedia/videogallery/index.html#.VBFB5S5dVOE</p>
+        <p style="font-size: 12px">Source: https://www.youtube.com/embed/ih9jPaZct1w</p>
     </div>
 </div>
 <footer style="padding: 4%;">
     <span>
-        <button type="button" onclick="location.href='Survey.html'" style="cursor: pointer; background: none; border: 1px solid; border-radius: 7px; padding: 11px 20px 11px 20px; margin-right: 12%;">Submit & Next Question</button>
-        <button style="cursor: pointer; background: none; border: 1px solid; border-radius: 7px; padding: 11px 20px 11px 20px; margin-right: 12%;">Cancel & Clear Selection</button>
+        <button type="button" onclick="nextProblem()" style="cursor: pointer; background: none; border: 1px solid; border-radius: 7px; padding: 11px 20px 11px 20px; margin-right: 12%;">Submit & Next Question</button>
+        <button onclick="var elements = document.getElementsByName('source'); for (var i = 0; i < elements.length; i++) elements[i].checked = false;" style="cursor: pointer; background: none; border: 1px solid; border-radius: 7px; padding: 11px 20px 11px 20px; margin-right: 12%;">Cancel & Clear Selection</button>
     </span>
 </footer>
+<script> 
+    function nextProblem() {
+        var elements = document.getElementsByName('source');
+        var score = 0;
+        var firstOptionCorrect = false;
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i].checked === true && elements[i].value === "source1") {
+                score = score + 1;
+            }
+        }
+        localStorage.setItem('problemSet3', score);
+        localStorage.setItem('problemSet3Answered', 1);
+        location.href = 'Survey.html';
+    }
+</script>
 </body>
 </html>

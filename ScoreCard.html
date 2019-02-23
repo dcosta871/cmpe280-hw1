@@ -11,29 +11,102 @@
     <div style="height: 270px; padding: 20px; border: 1px black solid; overflow-y: auto">
         <details>
             <summary>Quantitative Section</summary>
-            <p><b>Number of Questions Answered: </b></p>
-            <p><b>Number of Correct Answers: </b></p>
-            <p><b>Score: </b></p>
+            <p><b>Number of Questions Answered: </b><span id="numAnswered1"></span></p>
+            <p><b>Number of Correct Answers: </b><span id="numCorrect1"></span></p>
+            <p><b>Score: </b><span id="percentage1"></span></p>
         </details>
         <details>
             <summary>Reading Section</summary>
-            <p><b>Number of Questions Answered: </b></p>
-            <p><b>Number of Correct Answers: </b></p>
-            <p><b>Score: </b></p>
+            <p><b>Number of Questions Answered: </b><span id="numAnswered2"></span></p>
+            <p><b>Number of Correct Answers: </b><span id="numCorrect2"></span></p>
+            <p><b>Score: </b><span id="percentage2"></span></p>
         </details>
         <details>
             <summary>Audio/Video Section</summary>
-            <p><b>Number of Questions Answered: </b></p>
-            <p><b>Number of Correct Answers: </b></p>
-            <p><b>Score: </b></p>
+            <p><b>Number of Questions Answered: </b><span id="numAnswered3"></span></p>
+            <p><b>Number of Correct Answers: </b><span id="numCorrect3"></span></p>
+            <p><b>Score: </b><span id="percentage3"></span></p>
         </details>
     </div>
     <p style="text-align: center;"><b>Thank You!!</b></p>
 </div>
 <footer style="padding: 4%;">
     <span>
-        <button style="cursor: pointer; background: none; border: 1px solid; border-radius: 7px; padding: 11px 45px 11px 45px; margin-left: 41%;">Finish</button>
+        <button type="button" onclick="location.href = 'LoginPage.html'" style="cursor: pointer; background: none; border: 1px solid; border-radius: 7px; padding: 11px 45px 11px 45px; margin-left: 41%;">Finish</button>
     </span>
 </footer>
+<script> 
+    var problemSet1 = localStorage.getItem("problemSet1");
+    var problemSet1Answered = localStorage.getItem("problemSet1Answered");
+    if (problemSet1 == null || problemSet1Answered == null) {
+        var el = document.getElementById("numAnswered1");
+        el.textContent = "0";
+
+        el = document.getElementById("numCorrect1");
+        el.textContent = "0";
+
+        el = document.getElementById("percentage1");
+        el.textContent = "N/A";
+    }
+    else {
+        var el = document.getElementById("numAnswered1");
+        el.textContent = problemSet1Answered.toString();
+
+        el = document.getElementById("numCorrect1");
+        el.textContent = problemSet1.toString();
+
+        el = document.getElementById("percentage1");
+        var percentage = (problemSet1 / problemSet1Answered) * 100;
+        el.textContent = percentage.toString() + "%";
+    }
+
+    var problemSet2 = localStorage.getItem("problemSet2");
+    var problemSet2Answered = localStorage.getItem("problemSet2Answered");
+    if (problemSet2 == null || problemSet2Answered == null) {
+        var el = document.getElementById("numAnswered2");
+        el.textContent = "0";
+
+        el = document.getElementById("numCorrect2");
+        el.textContent = "0";
+
+        el = document.getElementById("percentage2");
+        el.textContent = "N/A";
+    }
+    else {
+        var el = document.getElementById("numAnswered2");
+        el.textContent = problemSet2Answered.toString();
+
+        el = document.getElementById("numCorrect2");
+        el.textContent = problemSet2.toString();
+
+        el = document.getElementById("percentage2");
+        var percentage = (problemSet2 / problemSet2Answered) * 100;
+        el.textContent = percentage.toString() + "%";
+    }
+
+    var problemSet3 = localStorage.getItem("problemSet3");
+    var problemSet3Answered = localStorage.getItem("problemSet3Answered");
+    if (problemSet3 == null || problemSet3Answered == null) {
+        var el = document.getElementById("numAnswered3");
+        el.textContent = "0";
+
+        el = document.getElementById("numCorrect3");
+        el.textContent = "0";
+
+        el = document.getElementById("percentage3");
+        el.textContent = "N/A";
+    }
+    else {
+        var el = document.getElementById("numAnswered3");
+        el.textContent = problemSet3Answered.toString();
+
+        el = document.getElementById("numCorrect3");
+        el.textContent = problemSet3.toString();
+
+        el = document.getElementById("percentage3");
+        var percentage = (problemSet3 / problemSet3Answered) * 100;
+        el.textContent = percentage.toString() + "%";
+    }
+</script>
 </body>
 </html>
